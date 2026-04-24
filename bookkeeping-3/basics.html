@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>簿記3級 - 最初に覚える3つの基本</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.8;
+      padding: 2rem;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #f8fafc;
+    }
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 2.5rem;
+      font-size: 0.9rem;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-left: 4px solid #3b82f6;
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      color: #60a5fa;
+      margin-bottom: 1rem;
+    }
+    .card h2 .num {
+      display: inline-block;
+      background: #3b82f6;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 0.85rem;
+      margin-right: 0.5rem;
+    }
+
+    /* 仕訳テーブル */
+    .journal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .journal-table th {
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .journal-table td {
+      padding: 0.6rem 1rem;
+      font-size: 0.95rem;
+    }
+    .journal-table .debit-header {
+      background: #1e3a5f;
+      color: #60a5fa;
+      text-align: center;
+      border-radius: 8px 0 0 0;
+    }
+    .journal-table .credit-header {
+      background: #3b1f3b;
+      color: #f472b6;
+      text-align: center;
+      border-radius: 0 8px 0 0;
+    }
+    .journal-table .debit-cell {
+      background: #172554;
+      border-bottom: 1px solid #1e3a5f;
+    }
+    .journal-table .credit-cell {
+      background: #2d1a2d;
+      border-bottom: 1px solid #3b1f3b;
+    }
+    .journal-table .debit-cell:last-child { border-radius: 0 0 0 8px; }
+    .journal-table .credit-cell:last-child { border-radius: 0 0 8px 0; }
+
+    .tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: 0.3rem;
+    }
+    .tag-asset { background: #164e63; color: #67e8f9; }
+    .tag-liability { background: #4c1d95; color: #c4b5fd; }
+    .tag-equity { background: #065f46; color: #6ee7b7; }
+    .tag-revenue { background: #713f12; color: #fcd34d; }
+    .tag-expense { background: #7c2d12; color: #fdba74; }
+
+    .mnemonic {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .mnemonic strong { color: #fbbf24; }
+
+    /* 等式 */
+    .equation {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding: 1.5rem;
+      background: #0f172a;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .eq-asset { color: #67e8f9; }
+    .eq-liability { color: #c4b5fd; }
+    .eq-equity { color: #6ee7b7; }
+    .eq-sign { color: #94a3b8; margin: 0 0.5rem; }
+
+    /* 仕訳例 */
+    .entry-box {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .entry-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      align-items: center;
+    }
+    .entry-debit { color: #60a5fa; }
+    .entry-credit { color: #f472b6; }
+    .entry-slash { color: #475569; font-size: 1.3rem; }
+    .entry-label {
+      text-align: center;
+      color: #94a3b8;
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+    }
+    .entry-point {
+      text-align: center;
+      color: #fbbf24;
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+      font-size: 0.9rem;
+      margin-top: 0.75rem;
+      font-weight: 600;
+    }
+
+    .next {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: #1e293b;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    .next p { color: #94a3b8; font-size: 0.9rem; }
+    .next .action {
+      color: #34d399;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>簿記3級 - 最初に覚える3つの基本</h1>
+    <p class="subtitle">これを理解すれば、すぐに問題演習に入れます</p>
+
+    <!-- 1. 5要素 -->
+    <div class="card">
+      <h2><span class="num">1</span>簿記の5要素と借方・貸方</h2>
+      <table class="journal-table">
+        <tr>
+          <th class="debit-header">借方（左）</th>
+          <th class="credit-header">貸方（右）</th>
+        </tr>
+        <tr>
+          <td class="debit-cell"><span class="tag tag-asset">資産</span> の増加</td>
+          <td class="credit-cell"><span class="tag tag-liability">負債</span> の増加</td>
+        </tr>
+        <tr>
+          <td class="debit-cell"><span class="tag tag-expense">費用</span> の発生</td>
+          <td class="credit-cell"><span class="tag tag-equity">純資産</span> の増加</td>
+        </tr>
+        <tr>
+          <td class="debit-cell" style="border-radius: 0 0 0 8px;"></td>
+          <td class="credit-cell" style="border-radius: 0 0 8px 0;"><span class="tag tag-revenue">収益</span> の発生</td>
+        </tr>
+      </table>
+      <div class="mnemonic">
+        借方 = <strong>「資・費」</strong>　／　貸方 = <strong>「負・純・収」</strong>
+      </div>
+    </div>
+
+    <!-- 2. 等式 -->
+    <div class="card">
+      <h2><span class="num">2</span>会計の基本等式</h2>
+      <div class="equation">
+        <span class="eq-asset">資産</span>
+        <span class="eq-sign">=</span>
+        <span class="eq-liability">負債</span>
+        <span class="eq-sign">+</span>
+        <span class="eq-equity">純資産</span>
+      </div>
+      <p style="color: #94a3b8; text-align: center; margin-top: 0.5rem;">
+        全ての取引は、この等式のバランスを保つように記録される
+      </p>
+    </div>
+
+    <!-- 3. 仕訳 -->
+    <div class="card">
+      <h2><span class="num">3</span>仕訳の形</h2>
+      <p style="color: #cbd5e1; margin-bottom: 0.5rem;">例：商品を売って現金100円を受け取った</p>
+      <div class="entry-box">
+        <div class="entry-row">
+          <span class="entry-debit">（借方）現金　100</span>
+          <span class="entry-slash">／</span>
+          <span class="entry-credit">（貸方）売上　100</span>
+        </div>
+        <div class="entry-label">
+          資産（現金）が増えた → 借方　｜　収益（売上）が発生 → 貸方
+        </div>
+        <div class="entry-point">
+          左右は必ず同じ金額になる = 複式簿記
+        </div>
+      </div>
+    </div>
+
+    <div class="next">
+      <p>この3つを理解したら準備完了</p>
+      <p class="action">問題集を開いて、すぐに演習を始めましょう</p>
+    </div>
+  </div>
+</body>
+</html>
