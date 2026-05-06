@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>簿記3級 - 第2問 攻略の前提知識</title>
+  <title>簿記3級 - 第2問・第3問の前提知識</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -258,217 +258,81 @@
       .slip-grid { grid-template-columns: 1fr; }
     }
 
-    /* Quiz section */
-    .card-quiz { border-left-color: #34d399; }
-    .card-quiz h2 { color: #34d399; }
-    .card-quiz h2 .num { background: #34d399; color: #064e3b; }
-
-    .quiz-events {
-      padding-left: 1.5rem;
+    /* 仕訳ステップ表示（決算整理用） */
+    .step-box {
+      font-family: 'SF Mono', monospace;
+      font-size: 0.88rem;
       color: #cbd5e1;
-      font-size: 0.92rem;
-      margin: 0.5rem 0 1rem 0;
-    }
-    .quiz-events li {
-      margin-bottom: 0.6rem;
-      line-height: 1.7;
-    }
-    .quiz-events li strong {
-      color: #fbbf24;
-      font-family: 'SF Mono', monospace;
-      font-size: 0.88rem;
-    }
-
-    .quiz-instruction {
       background: #0f172a;
-      border-left: 3px solid #60a5fa;
+      padding: 0.7rem 1rem;
       border-radius: 6px;
-      padding: 0.6rem 1rem;
-      margin: 1rem 0;
-      color: #93c5fd;
-      font-size: 0.88rem;
-    }
-
-    .quiz-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0.5rem 0 1.5rem 0;
-      font-size: 0.9rem;
-    }
-    .quiz-table th {
-      background: #334155;
-      color: #f8fafc;
-      padding: 0.5rem;
-      text-align: center;
-      border: 1px solid #475569;
-      font-size: 0.85rem;
-    }
-    .quiz-table th.debit-h { background: #1e3a5f; color: #60a5fa; }
-    .quiz-table th.credit-h { background: #3b1f3b; color: #f472b6; }
-    .quiz-table td {
-      padding: 0.4rem;
-      border: 1px solid #475569;
-      background: #0f172a;
-      text-align: center;
-    }
-    .quiz-table td.date {
-      color: #94a3b8;
-      font-size: 0.88rem;
-      width: 60px;
-      font-family: 'SF Mono', monospace;
-    }
-    .quiz-table select,
-    .quiz-table input {
-      background: #1e293b;
-      color: #e2e8f0;
-      border: 1px solid #334155;
-      border-radius: 4px;
-      padding: 0.4rem 0.5rem;
-      font-size: 0.9rem;
-      width: 100%;
-      font-family: inherit;
-    }
-    .quiz-table input {
-      text-align: right;
-      font-family: 'SF Mono', monospace;
-    }
-    .quiz-table select:focus,
-    .quiz-table input:focus {
-      outline: none;
-      border-color: #60a5fa;
-    }
-    .quiz-table select.correct,
-    .quiz-table input.correct {
-      border-color: #34d399;
-      background: #064e3b;
-      color: #6ee7b7;
-    }
-    .quiz-table select.incorrect,
-    .quiz-table input.incorrect {
-      border-color: #f87171;
-      background: #450a0a;
-      color: #fecaca;
-    }
-    .quiz-table tr.open-record td.open-label {
-      background: #1e293b;
-      color: #fbbf24;
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-align: left;
-      padding-left: 1rem;
-    }
-
-    .quiz-actions {
-      display: flex;
-      gap: 0.75rem;
-      margin: 1.5rem 0 0.5rem 0;
-    }
-    .btn-grade,
-    .btn-reset {
-      padding: 0.7rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s;
-    }
-    .btn-grade { background: #34d399; color: #064e3b; }
-    .btn-grade:hover { background: #6ee7b7; }
-    .btn-reset { background: #475569; color: #f8fafc; }
-    .btn-reset:hover { background: #64748b; }
-
-    #quiz-result { margin-top: 1.5rem; }
-    #quiz-result .score-banner {
-      background: #0f172a;
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    #quiz-result .score-banner .score-num {
-      font-size: 2rem;
-      font-weight: 700;
-      font-family: 'SF Mono', monospace;
-    }
-    #quiz-result .score-perfect .score-num { color: #34d399; }
-    #quiz-result .score-good .score-num { color: #fbbf24; }
-    #quiz-result .score-low .score-num { color: #f87171; }
-    #quiz-result .score-message {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      margin-top: 0.4rem;
-    }
-
-    .wrong-list {
-      background: #0f172a;
-      border-left: 4px solid #f87171;
-      border-radius: 6px;
-      padding: 0.75rem 1.25rem;
       margin: 0.5rem 0;
-      list-style: none;
-    }
-    .wrong-list li {
-      color: #fecaca;
-      margin: 0.4rem 0;
-      font-size: 0.9rem;
       line-height: 1.6;
     }
-    .wrong-list li .label { color: #94a3b8; }
-    .wrong-list li .you-said { color: #f87171; text-decoration: line-through; }
-    .wrong-list li .correct-ans { color: #6ee7b7; font-weight: 700; }
+    .step-box .dr { color: #60a5fa; }
+    .step-box .cr { color: #f472b6; }
+    .step-box .hi { color: #fbbf24; font-weight: 700; }
+    .step-box .lbl { color: #94a3b8; font-size: 0.82rem; display: block; margin-bottom: 0.25rem; }
 
-    .quiz-explanation {
+    .formula {
       background: #0f172a;
       border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin-top: 1.25rem;
-      border-left: 3px solid #60a5fa;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      text-align: center;
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      border: 1px solid #334155;
     }
-    .quiz-explanation h4 {
-      color: #60a5fa;
-      font-size: 0.98rem;
-      margin: 0.75rem 0 0.4rem 0;
+    .formula strong { color: #34d399; }
+    .formula .term { color: #fbbf24; }
+
+    /* 精算表用 */
+    .ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0;
+      font-size: 0.82rem;
     }
-    .quiz-explanation h4:first-child { margin-top: 0; }
-    .quiz-explanation .calc-line {
-      font-family: 'SF Mono', monospace;
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      margin: 0.2rem 0;
-      padding-left: 0.5rem;
+    .ws-table th, .ws-table td {
+      border: 1px solid #475569;
+      padding: 0.4rem 0.3rem;
+      text-align: center;
     }
-    .quiz-explanation .calc-line .hi { color: #fbbf24; font-weight: 700; }
-    .quiz-explanation .step {
-      font-family: 'SF Mono', monospace;
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      background: #1e293b;
-      padding: 0.5rem 0.75rem;
-      border-radius: 4px;
-      margin: 0.3rem 0;
-      line-height: 1.5;
+    .ws-table thead tr:first-child th {
+      background: #334155;
+      color: #f8fafc;
     }
-    .quiz-explanation .step .dr { color: #60a5fa; }
-    .quiz-explanation .step .cr { color: #f472b6; }
-    .quiz-explanation .step .date-tag { color: #fbbf24; margin-right: 0.4rem; }
+    .ws-table thead tr:nth-child(2) th { background: #1e293b; color: #94a3b8; font-size: 0.75rem; }
+    .ws-table .col-tb { background: #1e293b; }
+    .ws-table .col-adj { background: #422006; color: #fde68a; }
+    .ws-table .col-pl { background: #2d1a2d; color: #f472b6; }
+    .ws-table .col-bs { background: #172554; color: #93c5fd; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>簿記3級 - 第2問 攻略の前提知識</h1>
-    <p class="subtitle">仕訳の延長で解ける。帳簿・補助簿・伝票の全体像を押さえる</p>
+    <h1>簿記3級 - 第2問・第3問の前提知識</h1>
+    <p class="subtitle">帳簿・補助簿・伝票・試算表・決算整理の全体像</p>
 
     <div class="toc">
-      <h3>目次</h3>
+      <h3>目次（第2問対策）</h3>
       <ol>
         <li><a href="#sec1">帳簿の全体像（主要簿と補助簿）</a></li>
         <li><a href="#sec2">総勘定元帳（T勘定・諸口・締切）</a></li>
         <li><a href="#sec3">補助簿の種類と用途</a></li>
         <li><a href="#sec4">商品有高帳（先入先出法・移動平均法）</a></li>
         <li><a href="#sec5">伝票会計（3伝票制）</a></li>
-        <li><a href="#sec6">練習問題：経過勘定の勘定記入（採点機能つき）</a></li>
+        <li><a href="#sec6">試算表（合計・残高・合計残高）</a></li>
+      </ol>
+      <h3 style="margin-top:1.25rem;">目次（第3問対策）</h3>
+      <ol start="7">
+        <li><a href="#sec7">決算の流れと決算整理仕訳の全体像</a></li>
+        <li><a href="#sec8">売上原価の算定（しーくりくりしー）</a></li>
+        <li><a href="#sec9">減価償却（定額法・月割・間接法）</a></li>
+        <li><a href="#sec10">貸倒引当金の設定（差額補充法）</a></li>
+        <li><a href="#sec11">精算表（10桁精算表）</a></li>
+        <li><a href="#sec12">財務諸表（P/L・B/S）</a></li>
       </ol>
     </div>
 
@@ -700,261 +564,284 @@
       <p>1日分の伝票を勘定科目ごとに集計した表。総勘定元帳への転記を効率化するために使う。借方合計と貸方合計が必ず一致する。</p>
     </div>
 
-    <!-- 6. 練習問題 -->
-    <div class="card card-quiz">
-      <h2 id="sec6"><span class="num">6</span>練習問題：経過勘定の勘定記入</h2>
-      <p>第2問の典型形式。会計期間は <strong>X4年4月1日〜X5年3月31日</strong>。</p>
+    <!-- 6. 試算表 -->
+    <div class="card">
+      <h2 id="sec6"><span class="num">6</span>試算表（合計・残高・合計残高）</h2>
+      <p>仕訳→転記が正しくできているかをチェックする表。<strong>借方合計＝貸方合計</strong>が必ず成立する。第2問でよく出題される。</p>
 
-      <h3>取引</h3>
-      <ol class="quiz-events">
-        <li><strong>X4/4/1</strong>　前期末に計上した未収利息勘定 ¥15,000 について期首再振替仕訳を行った。</li>
-        <li><strong>X4/10/31</strong>　貸付金の利息1年分を、貸付金の返済金とともに現金で受け取った。なお、この貸付金は X3年11月1日 に年利3%、期間1年、利息は返済時に受け取るという条件で、取引先 甲株式会社 に ¥1,200,000 を貸し付けたものである。</li>
-        <li><strong>X4/12/1</strong>　取引先 乙株式会社 に ¥800,000（年利6%、期間1年、利息は返済時に受取）を現金で貸し付けた。</li>
-        <li><strong>X5/3/31</strong>　決算にあたって、未収分の利息を計上した。</li>
-        <li><strong>X5/3/31</strong>　勘定の締切を行った（未収利息については、開始記入もあわせて行った）。</li>
-      </ol>
-
-      <p class="quiz-instruction">摘要欄はプルダウンから選択、金額は数字で入力してください（カンマ不要）。</p>
-
-      <h3>受取利息</h3>
-      <table class="quiz-table">
-        <thead>
-          <tr>
-            <th>日付</th><th>摘要</th><th class="debit-h">借方</th>
-            <th>日付</th><th>摘要</th><th class="credit-h">貸方</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="date">4/1</td>
-            <td><select data-key="ru_dr1_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="ru_dr1_amount" placeholder="金額"></td>
-            <td class="date">10/31</td>
-            <td><select data-key="ru_cr1_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="ru_cr1_amount" placeholder="金額"></td>
-          </tr>
-          <tr>
-            <td class="date">3/31</td>
-            <td><select data-key="ru_dr2_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="ru_dr2_amount" placeholder="金額"></td>
-            <td class="date">3/31</td>
-            <td><select data-key="ru_cr2_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="ru_cr2_amount" placeholder="金額"></td>
-          </tr>
-        </tbody>
+      <h3>3種類の試算表</h3>
+      <table class="compare">
+        <tr><th>名称</th><th>構造</th><th>用途</th></tr>
+        <tr><td><strong>合計試算表</strong></td><td>各勘定の借方合計と貸方合計を並べる</td><td>取引総額の確認</td></tr>
+        <tr><td><strong>残高試算表</strong></td><td>各勘定の残高だけを並べる</td><td>財政状態のスナップショット</td></tr>
+        <tr><td><strong>合計残高試算表</strong></td><td>合計と残高の両方を1つの表に</td><td>第2問で頻出。最も情報量が多い</td></tr>
       </table>
 
-      <h3>未収利息</h3>
-      <table class="quiz-table">
-        <thead>
-          <tr>
-            <th>日付</th><th>摘要</th><th class="debit-h">借方</th>
-            <th>日付</th><th>摘要</th><th class="credit-h">貸方</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="date">4/1</td>
-            <td><select data-key="mu_dr1_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="mu_dr1_amount" placeholder="金額"></td>
-            <td class="date">4/1</td>
-            <td><select data-key="mu_cr1_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="mu_cr1_amount" placeholder="金額"></td>
-          </tr>
-          <tr>
-            <td class="date">3/31</td>
-            <td><select data-key="mu_dr2_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="mu_dr2_amount" placeholder="金額"></td>
-            <td class="date">3/31</td>
-            <td><select data-key="mu_cr2_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="mu_cr2_amount" placeholder="金額"></td>
-          </tr>
-          <tr class="open-record">
-            <td class="date">4/1</td>
-            <td><select data-key="mu_open_summary"></select></td>
-            <td><input type="text" inputmode="numeric" data-key="mu_open_amount" placeholder="金額"></td>
-            <td colspan="3" class="open-label">← 翌期首の開始記入</td>
-          </tr>
-        </tbody>
+      <h3>残高の書き方</h3>
+      <p>残高は、その勘定の<strong>通常の側（ホームポジション）</strong>に書く。</p>
+      <table class="compare">
+        <tr><th>勘定の種類</th><th>残高の側</th></tr>
+        <tr><td>資産・費用</td><td><strong>借方（左）</strong></td></tr>
+        <tr><td>負債・純資産・収益</td><td><strong>貸方（右）</strong></td></tr>
       </table>
 
-      <div class="quiz-actions">
-        <button class="btn-grade" type="button" onclick="gradeQuiz()">採点する</button>
-        <button class="btn-reset" type="button" onclick="resetQuiz()">リセット</button>
+      <div class="key">
+        試算表の役割は<strong>仕訳の正確性チェック</strong>。借方と貸方の合計が一致しなければ、どこかで転記ミスや仕訳の片漏れが起きている。
+      </div>
+    </div>
+
+    <!-- 7. 決算の流れ -->
+    <div class="card">
+      <h2 id="sec7"><span class="num">7</span>決算の流れと決算整理仕訳の全体像</h2>
+      <p>第3問は決算整理が中心。決算は<strong>3段階</strong>で進む。</p>
+
+      <h3>決算の3段階</h3>
+      <table class="compare">
+        <tr><th>段階</th><th>やること</th></tr>
+        <tr><td><strong>① 決算予備手続</strong></td><td>決算整理前残高試算表の作成、棚卸表の作成</td></tr>
+        <tr><td><strong>② 決算本手続</strong></td><td>決算整理仕訳 → 精算表 → 帳簿締切（損益振替・繰越利益剰余金へ）</td></tr>
+        <tr><td><strong>③ 決算報告手続</strong></td><td>損益計算書（P/L）と貸借対照表（B/S）の作成</td></tr>
+      </table>
+
+      <h3>決算整理仕訳の8パターン（暗記）</h3>
+      <table class="compare">
+        <tr><th>論点</th><th>仕訳の概要</th></tr>
+        <tr><td>1. 現金過不足の整理</td><td>原因不明分を雑損／雑益へ振替</td></tr>
+        <tr><td>2. 当座借越への振替</td><td>当座預金が貸方残 → 当座借越（負債）へ</td></tr>
+        <tr><td>3. 売上原価の算定</td><td>「しーくりくりしー」（次セクション）</td></tr>
+        <tr><td>4. 貸倒引当金の設定</td><td>差額補充法</td></tr>
+        <tr><td>5. 減価償却の計上</td><td>定額法・間接法・月割計算</td></tr>
+        <tr><td>6. 経過勘定の計上</td><td>前払・前受・未収・未払の4種</td></tr>
+        <tr><td>7. 貯蔵品の整理</td><td>未使用の収入印紙・切手 → 貯蔵品（資産）</td></tr>
+        <tr><td>8. 法人税等の計上</td><td>(借) 法人税住民税及び事業税 / (貸) 未払法人税等</td></tr>
+      </table>
+
+      <div class="warn">
+        <strong>頻出ポイント</strong>: 決算整理は「<strong>仕訳</strong>」であり、必ず仕訳帳を経由する。精算表に直接書くのではなく、まず仕訳→転記→精算表という流れ。
+      </div>
+    </div>
+
+    <!-- 8. 売上原価の算定 -->
+    <div class="card">
+      <h2 id="sec8"><span class="num">8</span>売上原価の算定（しーくりくりしー）</h2>
+      <p>三分法では、期中はすべての仕入を「仕入」勘定に計上する。期末に売上原価を算定する必要がある。</p>
+
+      <h3>売上原価の式</h3>
+      <div class="formula">
+        <strong>売上原価</strong> ＝
+        <span class="term">期首商品棚卸高</span>
+         ＋ <span class="term">当期商品仕入高</span>
+         − <span class="term">期末商品棚卸高</span>
       </div>
 
-      <div id="quiz-result"></div>
+      <h3>仕訳の語呂「しーくりくりしー」</h3>
+      <p>仕訳2行で売上原価を算定する。頭文字を語呂で覚える。</p>
+
+      <div class="step-box">
+        <span class="lbl">①「しー」「くり」 — 期首商品を仕入に振替</span>
+        <span class="dr">(借) 仕入 ×××</span> / <span class="cr">(貸) 繰越商品 ×××</span>
+      </div>
+
+      <div class="step-box">
+        <span class="lbl">②「くり」「しー」 — 期末商品を仕入から控除</span>
+        <span class="dr">(借) 繰越商品 ×××</span> / <span class="cr">(貸) 仕入 ×××</span>
+      </div>
+
+      <div class="key">
+        2仕訳の結果、<strong>仕入勘定の残高 ＝ 売上原価</strong>になる。<br>
+        繰越商品勘定の残高 ＝ 期末商品棚卸高（次期繰越されてB/Sの「商品」になる）
+      </div>
+
+      <h3>例題</h3>
+      <p>期首商品 30,000、当期仕入 200,000、期末商品 40,000 の場合</p>
+      <div class="step-box">
+        <span class="lbl">仕訳①</span>
+        <span class="dr">(借) 仕入 30,000</span> / <span class="cr">(貸) 繰越商品 30,000</span>
+      </div>
+      <div class="step-box">
+        <span class="lbl">仕訳②</span>
+        <span class="dr">(借) 繰越商品 40,000</span> / <span class="cr">(貸) 仕入 40,000</span>
+      </div>
+      <p>仕入勘定の残高 ＝ 200,000 ＋ 30,000 − 40,000 ＝ <strong>190,000（売上原価）</strong></p>
+    </div>
+
+    <!-- 9. 減価償却 -->
+    <div class="card">
+      <h2 id="sec9"><span class="num">9</span>減価償却（定額法・月割・間接法）</h2>
+      <p>固定資産は使用や時間経過により価値が減るので、その減少分を費用として配分する手続き。</p>
+
+      <h3>定額法の計算式</h3>
+      <div class="formula">
+        年間減価償却費 ＝
+        <span class="term">(取得原価 − 残存価額)</span>
+         ÷ <span class="term">耐用年数</span>
+      </div>
+
+      <h3>仕訳（間接法）</h3>
+      <div class="step-box">
+        <span class="dr">(借) 減価償却費 ×××</span> / <span class="cr">(貸) 減価償却累計額 ×××</span>
+      </div>
+      <p><strong>減価償却累計額</strong> は資産のマイナス（評価勘定）。建物本体の取得原価を残しつつ、累計額を別勘定で表示することで、過去の取得価額と現在の価値減を分けて管理できる。</p>
+
+      <h3>月割計算（期中取得時の重要論点）</h3>
+      <p>期中（4/1以外）に取得した固定資産は、所有月数に応じて月割で計算する。</p>
+      <div class="formula">
+        当期減価償却費 ＝ 年間減価償却費 ×
+        <span class="term">所有月数 ÷ 12</span>
+      </div>
+
+      <h3>例題</h3>
+      <p>取得原価 600,000、残存価額 0、耐用年数 5年の備品を <strong>10/1</strong> に取得（決算は3/31）</p>
+      <div class="step-box">
+        <span class="lbl">計算</span>
+        年間: 600,000 ÷ 5 = 120,000<br>
+        当期: 120,000 × <span class="hi">6/12</span> = <span class="hi">60,000</span>（10〜3月の6ヶ月分）
+      </div>
+      <div class="step-box">
+        <span class="lbl">仕訳</span>
+        <span class="dr">(借) 減価償却費 60,000</span> / <span class="cr">(貸) 減価償却累計額 60,000</span>
+      </div>
+    </div>
+
+    <!-- 10. 貸倒引当金の設定 -->
+    <div class="card">
+      <h2 id="sec10"><span class="num">10</span>貸倒引当金の設定（差額補充法）</h2>
+      <p>期末の売掛金・受取手形に対して、貸倒れに備えて引当金を計上する。</p>
+
+      <h3>差額補充法の手順</h3>
+      <ol>
+        <li>必要な引当金 ＝ <strong>期末の売掛金等 × 設定率</strong>（例: 2%）</li>
+        <li>既存の貸倒引当金残高との<strong>差額</strong>のみを計上</li>
+      </ol>
+
+      <h3>仕訳パターン</h3>
+      <div class="step-box">
+        <span class="lbl">差額が不足（追加で繰入）</span>
+        <span class="dr">(借) 貸倒引当金繰入 ×××</span> / <span class="cr">(貸) 貸倒引当金 ×××</span>
+      </div>
+      <div class="step-box">
+        <span class="lbl">差額が過剰（戻し入れ）</span>
+        <span class="dr">(借) 貸倒引当金 ×××</span> / <span class="cr">(貸) 貸倒引当金戻入 ×××</span>
+      </div>
+
+      <h3>例題</h3>
+      <p>期末売掛金 500,000、設定率 2%、既存引当金残高 6,000</p>
+      <div class="step-box">
+        <span class="lbl">計算</span>
+        必要額 = 500,000 × 2% = <span class="hi">10,000</span><br>
+        差額 = 10,000 − 6,000 = <span class="hi">4,000</span>（不足）
+      </div>
+      <div class="step-box">
+        <span class="lbl">仕訳</span>
+        <span class="dr">(借) 貸倒引当金繰入 4,000</span> / <span class="cr">(貸) 貸倒引当金 4,000</span>
+      </div>
+
+      <div class="warn">
+        <strong>注意</strong>: 引当金の対象は <strong>受取手形 + 売掛金</strong> など特定の債権。決算整理仕訳としての設定はあくまで「期末残高 × 率」で計算し、差額を繰入。
+      </div>
+    </div>
+
+    <!-- 11. 精算表 -->
+    <div class="card">
+      <h2 id="sec11"><span class="num">11</span>精算表（10桁精算表）</h2>
+      <p>第3問の代表的な出題形式。決算整理を一覧表で処理し、損益計算書と貸借対照表を一気に作成する。</p>
+
+      <h3>10桁精算表の構造</h3>
+      <table class="ws-table">
+        <thead>
+          <tr>
+            <th rowspan="2">勘定科目</th>
+            <th colspan="2" class="col-tb">残高試算表</th>
+            <th colspan="2" class="col-adj">修正記入</th>
+            <th colspan="2" class="col-pl">損益計算書</th>
+            <th colspan="2" class="col-bs">貸借対照表</th>
+          </tr>
+          <tr>
+            <th class="col-tb">借方</th><th class="col-tb">貸方</th>
+            <th class="col-adj">借方</th><th class="col-adj">貸方</th>
+            <th class="col-pl">借方</th><th class="col-pl">貸方</th>
+            <th class="col-bs">借方</th><th class="col-bs">貸方</th>
+          </tr>
+        </thead>
+      </table>
+
+      <h3>記入の流れ</h3>
+      <ol>
+        <li><strong>残高試算表</strong>: 期中の集計結果を写す（与えられている）</li>
+        <li><strong>修正記入</strong>: 決算整理仕訳をそのまま転記</li>
+        <li><strong>損益計算書欄</strong>: 修正記入後の収益・費用を移す</li>
+        <li><strong>貸借対照表欄</strong>: 修正記入後の資産・負債・純資産を移す</li>
+        <li><strong>当期純利益</strong>: P/Lの差額 ＝ B/Sの差額（必ず一致）</li>
+      </ol>
+
+      <h3>勘定科目の振り分けルール</h3>
+      <table class="compare">
+        <tr><th>分類</th><th>P/L (損益計算書)</th><th>B/S (貸借対照表)</th></tr>
+        <tr><td>借方</td><td>費用</td><td>資産</td></tr>
+        <tr><td>貸方</td><td>収益</td><td>負債・純資産</td></tr>
+      </table>
+
+      <div class="warn">
+        <strong>頻出ミス</strong>: 経過勘定の <strong>前払・未収（資産）</strong> と <strong>前受・未払（負債）</strong> はB/Sへ。受取家賃・支払家賃などの本体勘定はP/Lへ。混同しないこと。
+      </div>
+
+      <h3>当期純利益の表示</h3>
+      <p>P/Lで「収益＞費用」なら <strong>当期純利益</strong> を借方に書く（P/Lの貸借が一致するように）。同額をB/Sの貸方にも記入する（純資産増加として）。</p>
+    </div>
+
+    <!-- 12. 財務諸表 -->
+    <div class="card">
+      <h2 id="sec12"><span class="num">12</span>財務諸表（P/L・B/S）</h2>
+      <p>決算の最終成果物。会社の経営成績（P/L）と財政状態（B/S）を外部に報告する。</p>
+
+      <h3>損益計算書（P/L: Profit and Loss Statement）</h3>
+      <p>1年間の経営成績を表す。<strong>収益と費用の差額が当期純利益（または純損失）</strong>。</p>
+      <table class="compare">
+        <tr><th>大項目</th><th>主な勘定</th></tr>
+        <tr><td>売上高</td><td>売上</td></tr>
+        <tr><td>売上原価</td><td>仕入勘定の残高（しーくりくりしー後）</td></tr>
+        <tr><td>販売費及び一般管理費</td><td>給料、支払家賃、減価償却費、貸倒引当金繰入、租税公課 など</td></tr>
+        <tr><td>営業外収益</td><td>受取利息、受取家賃 など</td></tr>
+        <tr><td>営業外費用</td><td>支払利息 など</td></tr>
+        <tr><td>当期純利益（または損失）</td><td>差額として計算</td></tr>
+      </table>
+
+      <h3>貸借対照表（B/S: Balance Sheet）</h3>
+      <p>決算日時点の財政状態を表す。<strong>資産 ＝ 負債 ＋ 純資産</strong>。</p>
+      <table class="compare">
+        <tr><th>左側（借方）</th><th>右側（貸方）</th></tr>
+        <tr>
+          <td>
+            <strong>資産</strong><br>
+            ・現金、預金<br>
+            ・売掛金、受取手形<br>
+            ・商品（=繰越商品の期末残高）<br>
+            ・建物、備品、土地<br>
+            ・前払費用、未収収益<br>
+            <span style="color:#94a3b8;font-size:0.85rem;">（減価償却累計額・貸倒引当金は控除表示）</span>
+          </td>
+          <td>
+            <strong>負債</strong><br>
+            ・買掛金、支払手形、借入金<br>
+            ・未払金、未払費用、前受収益<br>
+            ・未払法人税等<br><br>
+            <strong>純資産</strong><br>
+            ・資本金<br>
+            ・繰越利益剰余金（当期純利益が加算される）
+          </td>
+        </tr>
+      </table>
+
+      <div class="key">
+        財務諸表上の表示科目名は、簿記の勘定科目と<strong>異なるものがある</strong>:<br>
+        ・繰越商品 → <strong>商品</strong><br>
+        ・売上 → <strong>売上高</strong><br>
+        ・仕入 → <strong>売上原価</strong><br>
+        ・前払家賃 → <strong>前払費用</strong>、未収利息 → <strong>未収収益</strong><br>
+        ・未払家賃 → <strong>未払費用</strong>、前受家賃 → <strong>前受収益</strong>
+      </div>
     </div>
 
   </div>
-
-  <script>
-    const QUIZ_OPTIONS = [
-      '', '現金', '当座預金', '貸付金', '借入金',
-      '受取利息', '支払利息', '未収利息', '未払利息',
-      '損益', '前期繰越', '次期繰越', '諸口'
-    ];
-
-    const QUIZ_ANSWERS = {
-      ru_dr1_summary: '未収利息', ru_dr1_amount: 15000,
-      ru_dr2_summary: '損益',     ru_dr2_amount: 37000,
-      ru_cr1_summary: '現金',     ru_cr1_amount: 36000,
-      ru_cr2_summary: '未収利息', ru_cr2_amount: 16000,
-      mu_dr1_summary: '前期繰越', mu_dr1_amount: 15000,
-      mu_dr2_summary: '受取利息', mu_dr2_amount: 16000,
-      mu_cr1_summary: '受取利息', mu_cr1_amount: 15000,
-      mu_cr2_summary: '次期繰越', mu_cr2_amount: 16000,
-      mu_open_summary: '前期繰越', mu_open_amount: 16000,
-    };
-
-    const KEY_LABELS = {
-      ru_dr1_summary: '受取利息（借方） 4/1 の摘要',
-      ru_dr1_amount:  '受取利息（借方） 4/1 の金額',
-      ru_dr2_summary: '受取利息（借方） 3/31 の摘要',
-      ru_dr2_amount:  '受取利息（借方） 3/31 の金額',
-      ru_cr1_summary: '受取利息（貸方） 10/31 の摘要',
-      ru_cr1_amount:  '受取利息（貸方） 10/31 の金額',
-      ru_cr2_summary: '受取利息（貸方） 3/31 の摘要',
-      ru_cr2_amount:  '受取利息（貸方） 3/31 の金額',
-      mu_dr1_summary: '未収利息（借方） 4/1 の摘要',
-      mu_dr1_amount:  '未収利息（借方） 4/1 の金額',
-      mu_dr2_summary: '未収利息（借方） 3/31 の摘要',
-      mu_dr2_amount:  '未収利息（借方） 3/31 の金額',
-      mu_cr1_summary: '未収利息（貸方） 4/1 の摘要',
-      mu_cr1_amount:  '未収利息（貸方） 4/1 の金額',
-      mu_cr2_summary: '未収利息（貸方） 3/31 の摘要',
-      mu_cr2_amount:  '未収利息（貸方） 3/31 の金額',
-      mu_open_summary: '未収利息 翌期首4/1（開始記入）の摘要',
-      mu_open_amount: '未収利息 翌期首4/1（開始記入）の金額',
-    };
-
-    function initQuiz() {
-      document.querySelectorAll('select[data-key]').forEach(sel => {
-        QUIZ_OPTIONS.forEach(opt => {
-          const o = document.createElement('option');
-          o.value = opt;
-          o.textContent = opt || '— 選択 —';
-          sel.appendChild(o);
-        });
-      });
-    }
-
-    function parseAmount(raw) {
-      if (raw === null || raw === undefined) return NaN;
-      const s = String(raw).replace(/[,\s]/g, '');
-      if (s === '') return NaN;
-      const n = Number(s);
-      return Number.isFinite(n) ? n : NaN;
-    }
-
-    function fmt(n) {
-      return Number(n).toLocaleString('ja-JP');
-    }
-
-    function gradeQuiz() {
-      let correct = 0, total = 0;
-      const wrongs = [];
-
-      Object.keys(QUIZ_ANSWERS).forEach(key => {
-        const el = document.querySelector('[data-key="' + key + '"]');
-        if (!el) return;
-        const expected = QUIZ_ANSWERS[key];
-        let userVal, isCorrect;
-
-        if (el.tagName === 'SELECT') {
-          userVal = el.value;
-          isCorrect = userVal === expected;
-        } else {
-          userVal = parseAmount(el.value);
-          isCorrect = !Number.isNaN(userVal) && userVal === expected;
-        }
-
-        el.classList.remove('correct', 'incorrect');
-        el.classList.add(isCorrect ? 'correct' : 'incorrect');
-
-        total++;
-        if (isCorrect) {
-          correct++;
-        } else {
-          wrongs.push({ key, userVal, expected, isAmount: el.tagName !== 'SELECT' });
-        }
-      });
-
-      const pct = correct / total;
-      let scoreClass = 'score-low';
-      let message = 'まずは利息の月数按分から復習しましょう。';
-      if (pct === 1) {
-        scoreClass = 'score-perfect';
-        message = '完璧です！経過勘定の理解バッチリ';
-      } else if (pct >= 0.7) {
-        scoreClass = 'score-good';
-        message = 'もう少し。間違えた箇所を見直しましょう。';
-      }
-
-      let html = '<div class="score-banner ' + scoreClass + '">';
-      html += '<div class="score-num">' + correct + ' / ' + total + '</div>';
-      html += '<div class="score-message">' + message + '</div>';
-      html += '</div>';
-
-      if (wrongs.length > 0) {
-        html += '<ul class="wrong-list">';
-        wrongs.forEach(w => {
-          const youSaid = (w.isAmount && Number.isNaN(w.userVal)) ? '(未入力)'
-                        : (w.isAmount ? '¥' + fmt(w.userVal) : (w.userVal || '(未選択)'));
-          const correctAns = w.isAmount ? '¥' + fmt(w.expected) : w.expected;
-          html += '<li>';
-          html += '<span class="label">' + KEY_LABELS[w.key] + '</span><br>';
-          html += '<span class="you-said">' + youSaid + '</span> → ';
-          html += '<span class="correct-ans">' + correctAns + '</span>';
-          html += '</li>';
-        });
-        html += '</ul>';
-      }
-
-      html += getExplanationHTML();
-
-      document.getElementById('quiz-result').innerHTML = html;
-      document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function getExplanationHTML() {
-      return '' +
-        '<div class="quiz-explanation">' +
-        '<h4>1. 利息計算（月数按分）</h4>' +
-        '<div class="calc-line">甲社（X3/11/1〜X4/10/31, 1,200,000 × 3% = 36,000）</div>' +
-        '<div class="calc-line">　・前期分（X3/11〜X4/3 = 5ヶ月）: 36,000 × 5/12 = <span class="hi">15,000</span> ← 前期末未収利息</div>' +
-        '<div class="calc-line">　・当期分（X4/4〜X4/10 = 7ヶ月）: 36,000 × 7/12 = 21,000</div>' +
-        '<div class="calc-line">乙社（X4/12/1〜X5/11/30, 800,000 × 6% = 48,000）</div>' +
-        '<div class="calc-line">　・当期分（X4/12〜X5/3 = 4ヶ月）: 48,000 × 4/12 = <span class="hi">16,000</span> ← 当期末未収利息</div>' +
-
-        '<h4>2. 仕訳の流れ</h4>' +
-        '<div class="step"><span class="date-tag">X4/4/1</span>期首再振替<br>' +
-        '<span class="dr">(借) 受取利息 15,000</span> / <span class="cr">(貸) 未収利息 15,000</span></div>' +
-        '<div class="step"><span class="date-tag">X4/10/31</span>甲社からの返済（元本+利息1年分）<br>' +
-        '<span class="dr">(借) 現金 1,236,000</span> / <span class="cr">(貸) 貸付金 1,200,000、受取利息 36,000</span></div>' +
-        '<div class="step"><span class="date-tag">X4/12/1</span>乙社へ貸付<br>' +
-        '<span class="dr">(借) 貸付金 800,000</span> / <span class="cr">(貸) 現金 800,000</span></div>' +
-        '<div class="step"><span class="date-tag">X5/3/31</span>決算（乙社の未収分）<br>' +
-        '<span class="dr">(借) 未収利息 16,000</span> / <span class="cr">(貸) 受取利息 16,000</span></div>' +
-        '<div class="step"><span class="date-tag">X5/3/31</span>締切（受取利息→損益）<br>' +
-        '<span class="dr">(借) 受取利息 37,000</span> / <span class="cr">(貸) 損益 37,000</span><br>' +
-        '<span style="color:#94a3b8;font-size:0.8rem;">※ 36,000 + 16,000 − 15,000 = <span class="hi">37,000</span></span></div>' +
-
-        '<h4>3. 開始記入とは</h4>' +
-        '<div class="calc-line">資産（未収利息）の次期繰越額を、翌期首の借方に「前期繰越」として書き戻すこと。</div>' +
-        '<div class="calc-line">→ 翌期首4/1: 前期繰越 <span class="hi">16,000</span> を借方に記入</div>' +
-        '</div>';
-    }
-
-    function resetQuiz() {
-      document.querySelectorAll('[data-key]').forEach(el => {
-        el.value = '';
-        el.classList.remove('correct', 'incorrect');
-      });
-      document.getElementById('quiz-result').innerHTML = '';
-    }
-
-    initQuiz();
-  </script>
 </body>
 </html>
